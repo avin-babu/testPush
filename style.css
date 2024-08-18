@@ -1,0 +1,161 @@
+* {
+ box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.tool-box-cont{
+    height: 5rem;
+    background-color: cadetblue;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tool-box-cont > * {
+    margin-left: 4rem;
+}
+
+.tool-box-priority-cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 3rem;
+    width: 18rem;
+    background-color: beige;
+}
+
+.tool-box-priority-cont > *:hover {
+    background-color: gray;
+}
+
+.color{
+    height: 1.5rem;
+    width: 3rem;
+}
+
+.pink {
+    background-color: rgb(212, 95, 115);
+}
+
+.green {
+    background-color: rgb(73, 207, 39);
+}
+
+.blue {
+    background-color: rgb(22, 124, 165);
+}
+
+.yellow {
+    background-color: rgb(221, 221, 24);
+}
+
+.action-bttn-cont {
+    height: 3.5rem;
+    width: 8rem;
+    background-color: beige;
+    display: flex;
+}
+
+.action-bttn-cont > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: cadetblue;
+    width: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.action-bttn-cont > * :hover{
+    background-color: green;
+}
+
+.main-cont {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.ticket-cont{
+    background-color: cadetblue;
+    height: 14rem;
+    width: 16rem;
+    position: relative;
+}
+.ticket-color{
+    /* background-color: cadetblue; */
+    height: 2rem;
+    
+}
+.ticket-id{
+    background-color: beige;
+    height: 2.5rem;
+    text-align: center;
+    padding: 0.75rem ;
+}
+
+.ticket-area{
+    color: rgb(0, 0, 0);
+}
+
+.ticket-lock {
+    position: absolute;
+    display: flex;
+    bottom: 1px;
+    right: 1px;
+    height: 2.5rem;
+    width: 2.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-cont{
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    background-color: rgb(55, 75, 103);
+    width: 45vw;
+    height: 40vh;
+    display: none;
+    
+}
+
+.textarea-cont{
+    font-size:2rem;
+    height: 100%;
+    width: 75%;
+    border: none;
+    outline: none;
+    background-color: rgb(213, 212, 212);
+    font-family: 'Times New Roman', Times, serif;
+    resize: none;
+}
+
+.priority-color-cont{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.priority-color{
+    height: 3.5rem;
+    width: 6rem;
+}
+
+.active {
+    border: 5px solid whitesmoke;
+}
+
+
+.fa-lock, fa-unlock {
+    cursor: pointer;
+}
