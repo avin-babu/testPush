@@ -15,7 +15,7 @@ let removeTaskFlag = false;
 // let isNewCreation = true;
 if(localStorage.getItem('taskArray')){
     const taskLocalArr = JSON.parse(localStorage.getItem('taskArray'));
-    console.log('element',element);
+    // console.log('element',element);
     taskLocalArr.forEach(function(element){
         createTicket(element.priColor,
             element.textContVal,
