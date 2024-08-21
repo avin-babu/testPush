@@ -5,7 +5,7 @@ const textCont = document.querySelector('.textarea-cont');
 const priorityColor = document.querySelectorAll('.priority-color');
 const removeButton = document.querySelector('.fa-minus');
 // const textCont = document.querySelector('.textarea-cont');
-const colorArr = ['red', 'green', 'blue', 'yellow'];
+const colorArr = ['blue','red' , 'yellow', 'green'];
 const taskArr = [];
 const colorToolArr = document.querySelectorAll('.color');
 console.log('colorToolArr',colorToolArr);
