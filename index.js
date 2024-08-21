@@ -5,7 +5,7 @@ const textCont = document.querySelector('.textarea-cont');
 const priorityColor = document.querySelectorAll('.priority-color');
 const removeButton = document.querySelector('.fa-minus');
 // const textCont = document.querySelector('.textarea-cont');
-const colorArr = ['pink', 'green', 'blue', 'yellow'];
+const colorArr = ['red', 'green', 'blue', 'yellow'];
 const taskArr = [];
 const colorToolArr = document.querySelectorAll('.color');
 console.log('colorToolArr',colorToolArr);
@@ -15,7 +15,7 @@ let removeTaskFlag = false;
 // let isNewCreation = true;
 if(localStorage.getItem('taskArray')){
     const taskLocalArr = JSON.parse(localStorage.getItem('taskArray'));
-    console.log('element',element);
+    // console.log('element',element);
     taskLocalArr.forEach(function(element){
         createTicket(element.priColor,
             element.textContVal,
@@ -33,7 +33,7 @@ addBttn.addEventListener('click', function(){
         modalCont.style.display = 'flex';
         addBttn.style.color = 'green';
         // isNewCreation = true;
-        console.log('Im here!');
+        // console.log('Im here!');
     }
     else{
         
