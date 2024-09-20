@@ -4,6 +4,13 @@ const mainCont = document.querySelector('.main-cont');
 const textCont = document.querySelector('.textarea-cont');
 const priorityColor = document.querySelectorAll('.priority-color');
 const removeButton = document.querySelector('.fa-minus');
+
+
+
+let isTrueCounter = false;
+// const playBttn = document.querySelector('.bttn');
+// const replayBttn = document.querySelector('.fa-reply');
+
 // const textCont = document.querySelector('.textarea-cont');
 const colorArr = ['blue','red' , 'yellow', 'green'];
 const taskArr = [];
@@ -22,7 +29,6 @@ if(localStorage.getItem('taskArray')){
             element.taskId,
             true
         )
-        
     })
 }
 // localStorage.setItem('taskArray',JSON.stringify(taskArr));
@@ -32,8 +38,6 @@ addBttn.addEventListener('click', function(){
     if(isTrue){
         modalCont.style.display = 'flex';
         addBttn.style.color = 'green';
-        // isNewCreation = true;
-        // console.log('Im here!');
     }
     else{
         
@@ -59,6 +63,23 @@ function createTicket(priColor, textContVal, taskId, isNewCreation){
         const divElem = document.createElement('div');
         divElem.setAttribute('class','ticket-cont');
         divElem.innerHTML = `
+                <div class="main-cont-counter">
+                    <div class="timer">
+                        <span>
+                            <input type="text" placeholder="00" maxlength="2" size="2" style="width: 30px;border: none; " class="hour" > :
+                            <input type="text" placeholder="00" maxlength="2" size="2" style="width: 30px; border: none;" class="minute" > : 
+                            <input type="text" placeholder="00" maxlength="2" size="2" style="width: 30px; border: none;" class="second" >
+                        </span>
+                    </div>
+                    <div class="tool-cont">
+                        <span>
+                            <i class="fa-duotone fa-solid fa-play bttn"></i>
+                            <i class="fa-solid fa-reply"></i>
+                        </span>
+                        <script src="script.js"></script>
+                    </div>
+
+                </div>
                 <div class="ticket-color ${priColor}" ></div>
                 <div class="ticket-id">${taskId}</div>
                 <div class="ticket-area">${textContVal}</div>
@@ -69,6 +90,7 @@ function createTicket(priColor, textContVal, taskId, isNewCreation){
         lockHandler(divElem, taskId);
         colorHandler(divElem, taskId);
         removeHandler(divElem, taskId);
+        setCounter(divElem);
         if(isNewCreation){
             taskArr.push({priColor,textContVal,taskId});
             localStorage.setItem('taskArray',JSON.stringify(taskArr));
@@ -206,3 +228,62 @@ colorToolArr.forEach(function(currColorEle){
         })
     })
 })
+
+
+
+function setCounter(ticket){
+    const hour = ticket.querySelector('.hour');
+    const minute = ticket.querySelector('.minute');
+    const second = ticket.querySelector('.second');
+    const playBttn = ticket.querySelector('.bttn');
+    const replayBttn = ticket.querySelector('.fa-reply');
+    
+    playBttn.addEventListener('click',function(){
+        isTrueCounter = !isTrueCounter;
+        if(isTrueCounter){
+            const hourValue = hour.value;
+            const minuteValue = minute.value;
+            const secondValue = second.value;
+
+            const now = new Date();
+            const targetTime = new Date(now.getTime()+hourValue*60*60*1000+minuteValue*60*1000+secondValue*1000);
+
+            intervalId = setInterval(function(){
+                const presentTime = Date.now();
+                const remainingTime = targetTime - presentTime;
+                if(remainingTime<=0){
+                    isTrueCounter = false;
+                    clearInterval(intervalId);
+                    playBttn.classList.remove('fa-pause');
+                    playBttn.classList.add('fa-play');
+                }
+                else{
+                    const hourVal =Math.floor((remainingTime) % (24*60*60*1000) / (60*60*1000)).toString().padStart(2,'0');
+                    const minuteVal = Math.floor((remainingTime) % (60*60*1000) / (60*1000)).toString().padStart(2,'0');
+                    const secondVal = Math.floor((remainingTime) % (60*1000) / (1000)).toString().padStart(2,'0');
+
+                    hour.value = hourVal;
+                    minute.value = minuteVal;
+                    second.value = secondVal; 
+                }               
+            }
+            ,1000);
+
+            playBttn.classList.remove('fa-play');
+            playBttn.classList.add('fa-pause');
+        }
+        else{
+            playBttn.classList.remove('fa-pause');
+            playBttn.classList.add('fa-play');
+            clearInterval(intervalId);
+        }
+    })
+    replayBttn.addEventListener('click',function(){
+        hour.value = '';
+        minute.value = '';
+        second.value = ''; 
+    })
+}
+
+
+

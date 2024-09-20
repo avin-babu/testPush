@@ -81,9 +81,12 @@ body{
     gap: 2rem;
     flex-wrap: wrap;
 }
+.ticket-timer{
+    height: 3rem;
+}
 .ticket-cont{
     background-color: cadetblue;
-    height: 14rem;
+    height: 16rem;
     width: 16rem;
     position: relative;
 }
@@ -157,5 +160,40 @@ body{
 
 
 .fa-lock, fa-unlock {
+    cursor: pointer;
+}
+
+.main-cont-counter{
+    border: 1px solid beige;
+    width: 16rem;
+    height: 3.75rem;
+    background-color: beige;
+    /* border-radius: 5%; */
+    padding: 8px;
+}
+
+.hour,.minute,.second{
+    background-color:black;
+    font-weight: 500;
+    font-style: oblique;
+    color: white;
+    height: 1.25rem;
+    width: 1.75rem;
+    border-radius: 20%;
+}
+.timer{
+   display: flex;
+   /* align-items: center; */
+   justify-content:center;
+}
+
+.tool-cont{
+    padding: 5px;
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.bttn{
+    padding: 5px;
     cursor: pointer;
 }
