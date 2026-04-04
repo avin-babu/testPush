@@ -27,6 +27,7 @@ if(localStorage.getItem('taskArray')){
         createTicket(element.priColor,
             element.textContVal,
             element.taskId,
+            
             true
         )
     })
@@ -57,7 +58,7 @@ modalCont.addEventListener('keydown', function(e){
         textCont.value = "";
     }
 })
-function createTicket(priColor, textContVal, taskId, isNewCreation){
+function createTicket(priColor, textContVal, taskId, isNewCreation ){
     // console.log(priColor);
 
         const divElem = document.createElement('div');
@@ -90,7 +91,7 @@ function createTicket(priColor, textContVal, taskId, isNewCreation){
         lockHandler(divElem, taskId);
         colorHandler(divElem, taskId);
         removeHandler(divElem, taskId);
-        setCounter(divElem);
+        setCounter(divElem,taskId);
         if(isNewCreation){
             taskArr.push({priColor,textContVal,taskId});
             localStorage.setItem('taskArray',JSON.stringify(taskArr));
@@ -231,7 +232,7 @@ colorToolArr.forEach(function(currColorEle){
 
 
 
-function setCounter(ticket){
+function setCounter(ticket, taskId){
     const hour = ticket.querySelector('.hour');
     const minute = ticket.querySelector('.minute');
     const second = ticket.querySelector('.second');
